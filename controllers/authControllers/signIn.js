@@ -8,6 +8,7 @@ exports.signIn = async (req, res) => {
     //  any field is empty
     if (!accountname || !password) {
       sendResponse(400, "All field must be filled", res);
+      return;
     }
 
     // Check account name is exit or not !
@@ -18,6 +19,7 @@ exports.signIn = async (req, res) => {
     // user account not found
     if (!userAccount) {
       sendResponse(404, "Invalid credentials", res);
+      return;
     }
 
     //
@@ -26,11 +28,13 @@ exports.signIn = async (req, res) => {
       const isMatchpassword = await userAccount.comparePassword(password);
       if (isMatchpassword === false) {
         sendResponse(404, "Invalid credentials", res);
+        return;
       }
 
       // Check Parent Confirmation True/false
       if (userAccount.parentConfirmation === true) {
         sendResponse(401, "This account is not verified", res);
+        return;
       }
       await userAccount.save();
 
