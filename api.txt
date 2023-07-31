@@ -1,0 +1,11 @@
+Base URL
+http://localhost:4000/api/v1
+
+
+
+End-Point's
+1 - signUp :-           /signUp
+2 - signIn :-           /signIn  
+3 - feedpage :-         /sideHustle/feedPage
+4 - myfeed :-           /post/myFeed
+5 - updateProfile :-    /updateProfile
