@@ -71,8 +71,6 @@ const {
 
 exports.createfeed = async (req, res) => {
   try {
-    console.log(req.files);
-    console.log(req.body);
     const { _id, caption } = req.body;
 
     // send post into the DB

@@ -1,12 +1,16 @@
 const FeedModel = require("../../model/myFeed");
 const UserModel = require("../../model/userModel");
-
 const { sendResponse } = require("../../utils/sendResponse");
 
 exports.feed = async (req, res) => {
   try {
-    // sendResponse(200, "Successfully", res);
-    // Your query pipeline
+    //
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 3;
+
+    const skip = (page - 1) * limit;
+
+    // Your query pipeline with pagination
     const result = await FeedModel.aggregate([
       {
         $lookup: {
@@ -26,8 +30,14 @@ exports.feed = async (req, res) => {
           "user.profileImage": 1,
         },
       },
+      { $sort: { createdAt: -1 } },
+      {
+        $skip: skip,
+      },
+      {
+        $limit: limit,
+      },
     ]);
-    // const user = await MyFeedModel.find({});
 
     sendResponse(200, "Successfully get myfeeds", res, result);
     return;
