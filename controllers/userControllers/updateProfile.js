@@ -4,7 +4,7 @@ const { uploadToCloudinary } = require("../../utils/cloudinary");
 
 exports.updateProfile = async (req, res) => {
   try {
-    console.log(req.file)
+    // console.log(req.file)
     // Destructure the request body
     const { _id, firstname, lastname, accountname, password, DOB } = req.body;
 

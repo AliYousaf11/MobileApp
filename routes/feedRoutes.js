@@ -7,6 +7,5 @@ const upload = require("../utils/Upload");
 
 // Routes...
 router.get("/sideHustle/feedPage", feedPage);
-// router.post("/sideHustle/feedPage", feedPage);
-router.post("/post/myFeed", upload.array("posts"), myFeed);
+router.post("/post/myFeed", upload.array("file"), myFeed);
 module.exports = router;
