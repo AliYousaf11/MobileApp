@@ -13,6 +13,5 @@ app.use(cors());
 app.use("/api/v1", require("./routes/userRoutes"));
 app.use("/api/v1", require("./routes/authRoutes"));
 app.use("/api/v1", require("./routes/feedRoutes"));
-// app.use("/api/v1", require("./routes/test"));
 
 module.exports = app;
