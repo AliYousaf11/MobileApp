@@ -10,8 +10,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 //...... app routes....
-app.use("/api/v1", require("./routes/userRoutes"));
-app.use("/api/v1", require("./routes/authRoutes"));
-app.use("/api/v1", require("./routes/feedRoutes"));
+app.use("/api", require("./routes/userRoutes"));
+app.use("/api", require("./routes/authRoutes"));
+app.use("/api", require("./routes/feedRoutes"));
 
 module.exports = app;
+

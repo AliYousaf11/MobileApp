@@ -2,7 +2,7 @@ const User = require("../../model/userModel");
 const bcrypt = require("bcryptjs");
 const { uploadToCloudinary } = require("../../utils/cloudinary");
 
-exports.updateProfile = async (req, res) => {
+exports.updateUser = async (req, res) => {
   try {
     // console.log(req.file)
     // Destructure the request body

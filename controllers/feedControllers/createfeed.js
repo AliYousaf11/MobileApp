@@ -69,7 +69,7 @@ const {
   handleDocumentUpload,
 } = require("../../utils/cloudinaryUtils");
 
-exports.myFeed = async (req, res) => {
+exports.createfeed = async (req, res) => {
   try {
     console.log(req.files);
     console.log(req.body);
@@ -77,7 +77,7 @@ exports.myFeed = async (req, res) => {
 
     // send post into the DB
     var Data = {
-      _id,
+      userID: _id,
       caption,
     };
 
@@ -118,7 +118,7 @@ exports.myFeed = async (req, res) => {
       Data.media = cloudinaryUrls;
 
       const UserPost = await MyFeedModel.create({
-        _id: Data._id,
+        userID: Data.userID,
         caption: Data.caption,
         media: Data.media,
       });
@@ -134,7 +134,7 @@ exports.myFeed = async (req, res) => {
     }
 
     const UserPost = await MyFeedModel.create({
-      _id: Data._id,
+      userID: Data.userID,
       caption: Data.caption,
       media: Data.media,
     });

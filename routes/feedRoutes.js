@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 // Controller's
-const { feedPage, myFeed } = require("./myRoutes");
+const { jobs, createfeed, feed } = require("../controllers");
 const upload = require("../utils/Upload");
 
 // Routes...
-router.get("/sideHustle/feedPage", feedPage);
-router.post("/post/myFeed", upload.array("file"), myFeed);
+router.get("/jobs", jobs);
+router.post("/createFeed", upload.array("file"), createfeed);
+router.get("/feeds", feed);
 module.exports = router;
