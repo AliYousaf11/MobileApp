@@ -10,6 +10,10 @@ exports.signIn = async (req, res) => {
       sendResponse(400, "All field must be filled", res);
       return;
     }
+    if (accountname.includes(" ")) {
+      sendResponse(400, "Invalid credentials", res);
+      return;
+    }
 
     // Check account name is exit or not !
     const userAccount = await User.findOne({
