@@ -25,6 +25,7 @@ exports.feed = async (req, res) => {
           caption: 1,
           media: 1,
           createdAt: 1,
+          likes: 1,
           "user.firstname": 1,
           "user.lastname": 1,
           "user.profileImage": 1,

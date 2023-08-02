@@ -5,6 +5,7 @@ const { createfeed } = require("./feedControllers/createfeed");
 const { updateUser } = require("./userControllers/updateUser");
 const { getUser } = require("./userControllers/getUser");
 const { feed } = require("./feedControllers/feed");
+const { likes } = require("../controllers/feedControllers/likes");
 
 module.exports = {
   signUp,
@@ -14,4 +15,5 @@ module.exports = {
   updateUser,
   getUser,
   feed,
+  likes,
 };
