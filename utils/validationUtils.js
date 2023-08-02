@@ -1,12 +1,24 @@
-// validationUtils.js
-
-// Validate user input for signup
 function validateSignUpInput(req) {
   const { firstname, lastname, accountname, password, DOB } = req.body;
   const errors = [];
 
-  if (!firstname || !lastname || !DOB || !accountname || !password) {
+  if (!password || !DOB) {
     errors.push("All fields must be filled");
+  }
+
+  // Validate accountname without spaces
+  if (accountname.includes(" ") || !accountname) {
+    errors.push("account without space");
+  }
+
+  // Validate first name and last name
+  // not space at start and end & no space more than one inside
+  const nameRegex = /^[^\s]+(?:\s[^\s]+)*$/;
+  if (!nameRegex.test(firstname) || !firstname) {
+    errors.push("Invalid Name");
+  }
+  if (!nameRegex.test(lastname) || !lastname) {
+    errors.push("Invalid Name");
   }
 
   const passwordValidation =
