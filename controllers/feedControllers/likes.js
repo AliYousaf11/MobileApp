@@ -4,7 +4,6 @@ const PostModel = require("../../model/myFeed");
 exports.likes = async (req, res) => {
   try {
     const { user_id, post_id } = req.body;
-    console.log(req.body);
     const post = await PostModel.findById(post_id);
 
     if (!post) {

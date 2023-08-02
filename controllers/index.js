@@ -7,6 +7,10 @@ const { getUser } = require("./userControllers/getUser");
 const { feed } = require("./feedControllers/feed");
 const { likes } = require("../controllers/feedControllers/likes");
 const { userFeed } = require("../controllers/userControllers/userFeed");
+const {
+  createComments,
+} = require("../controllers/feedControllers/createComments");
+const { comments } = require("../controllers/feedControllers/comments");
 
 module.exports = {
   signUp,
@@ -18,4 +22,6 @@ module.exports = {
   feed,
   likes,
   userFeed,
+  comments,
+  createComments,
 };
