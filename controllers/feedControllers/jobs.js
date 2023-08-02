@@ -1,15 +1,6 @@
 const sideHustle = require("../../model/feedPage");
 const { sendResponse } = require("../../utils/sendResponse");
 
-exports.jobs = async (req, res) => {
-  try {
-    const sideHustle_Jobs = await sideHustle.find();
-    sendResponse(200, "All sideHustle Jobs", res, sideHustle_Jobs);
-  } catch (error) {
-    sendResponse(200, "failed sideHustle Jobs", res);
-  }
-};
-
 // const sideHustle = require("../../model/feedPage");
 // const { sendResponse } = require("../../utils/sendResponse");
 
@@ -21,3 +12,16 @@ exports.jobs = async (req, res) => {
 //     sendResponse(200, "failed sideHustle Jobs", res);
 //   }
 // };
+
+exports.jobs = async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 2;
+    const skip = (page - 1) * limit;
+
+    const sideHustle_Jobs = await sideHustle.find().skip(skip).limit(limit);
+    sendResponse(200, "All sideHustle Jobs", res, sideHustle_Jobs);
+  } catch (error) {
+    sendResponse(200, "failed sideHustle Jobs", res);
+  }
+};

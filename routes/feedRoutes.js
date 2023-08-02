@@ -10,4 +10,5 @@ router.get("/jobs", jobs);
 router.post("/createFeed", upload.array("file"), createfeed);
 router.get("/feeds", feed);
 router.put("/likes", likes);
+
 module.exports = router;
