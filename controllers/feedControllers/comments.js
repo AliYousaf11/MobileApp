@@ -3,11 +3,23 @@ const { sendResponse } = require("../../utils/sendResponse");
 
 exports.comments = async (req, res) => {
   try {
+    const _id = req.params.post_id;
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 3;
     const skip = (page - 1) * limit;
 
+    // find post
+    const post = await FeedModel.findById(_id);
+
+    // post not found!
+    if (!post) {
+      sendResponse(404, "Post not found!", res);
+      return;
+    }
+
+    // aggregate Post Details
     const result = await FeedModel.aggregate([
+      { $match: { _id: post._id } },
       {
         $lookup: {
           from: "users",

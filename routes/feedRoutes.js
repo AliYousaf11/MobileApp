@@ -18,5 +18,5 @@ router.post("/createFeed", upload.array("file"), createfeed);
 router.get("/feeds", feed);
 router.put("/likes", likes);
 router.put("/createComments", createComments);
-router.get("/comments", comments);
+router.get("/comments/:post_id", comments);
 module.exports = router;
