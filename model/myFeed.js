@@ -1,5 +1,19 @@
 const mongoose = require("mongoose");
 
+const commentSchema = new mongoose.Schema({
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+  },
+  comments: {
+    type: String,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 const myFeedSchema = new mongoose.Schema(
   {
     userID: {
@@ -11,11 +25,8 @@ const myFeedSchema = new mongoose.Schema(
     },
     likes: {
       type: Array,
-      // default: 0,
     },
-    comments: {
-      type: Array,
-    },
+    comments: [commentSchema],
     media: {
       type: Array,
     },
