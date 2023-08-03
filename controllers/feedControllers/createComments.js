@@ -11,6 +11,7 @@ exports.createComments = async (req, res) => {
     }
 
     const post = await PostModel.findById(post_id);
+    const lengthOfComments = post.comments.length + 1;
     if (!post) {
       sendResponse(404, "Post not found", res);
       return;
@@ -20,9 +21,15 @@ exports.createComments = async (req, res) => {
     const newComment = { user_id, comments };
     post.comments.push(newComment);
 
+    // save the user comments
     await post.save();
-    sendResponse(200, "Comment added successfully", res, post);
+    sendResponse(200, "Comment added successfully", res, {
+      comments,
+      lengthOfComments,
+    });
   } catch (error) {
     sendResponse(500, "Failed to add comment", res);
   }
 };
+
+// i am sending current user comments and total length of comments by post_id in response

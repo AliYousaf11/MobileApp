@@ -21,7 +21,6 @@ exports.comments = async (req, res) => {
       },
       {
         $project: {
-          _id: 1,
           comments: {
             $filter: {
               input: "$comments",
@@ -33,6 +32,7 @@ exports.comments = async (req, res) => {
           },
           "user.firstname": 1,
           "user.lastname": 1,
+          "user.profileImage": 1,
         },
       },
       {
