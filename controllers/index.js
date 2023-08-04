@@ -11,7 +11,9 @@ const {
   createComments,
 } = require("../controllers/feedControllers/createComments");
 const { comments } = require("../controllers/feedControllers/comments");
-
+const { getChats } = require("../controllers/chatContollers/getChats");
+const { sendMessage } = require("./chatContollers/sendMessage");
+const { inbox } = require("../controllers/chatContollers/inbox");
 module.exports = {
   signUp,
   signIn,
@@ -24,4 +26,7 @@ module.exports = {
   userFeed,
   comments,
   createComments,
+  getChats,
+  sendMessage,
+  inbox,
 };
