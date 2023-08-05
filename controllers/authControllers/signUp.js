@@ -1,7 +1,6 @@
-const User = require("../../model/userModel");
-const { sendResponse } = require("../../utils/sendResponse");
-const { validateSignUpInput } = require("../../utils/validationUtils");
-const CatchAsync = require("../../middlewares/CatchAsyncError");
+const { User } = require("../../model");
+const { validateSignUpInput, sendResponse } = require("../../utils");
+const { CatchAsync } = require("../../middlewares/CatchAsyncError");
 
 exports.signUp = CatchAsync(async (req, res, next) => {
   const validationErrors = validateSignUpInput(req);

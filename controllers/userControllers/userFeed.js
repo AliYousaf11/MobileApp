@@ -1,28 +1,12 @@
-//     const userPost = await PostModel.aggregate([
-//       {
-//         $match: { userID: req.params.userID },
-//       },
-//       {
-//         $project: {
-//           caption: 1,
-//           likes: 1,
-//           comments: 1,
-//           media: 1,
-//           createdAt: 1,
-//         },
-//       },
-//     ]);
+const { Feed } = require("../../model");
+const { sendResponse, pagination } = require("../../utils/sendResponse");
+const { CatchAsync } = require("../../middlewares/CatchAsyncError");
 
-const PostModel = require("../../model/myFeed");
-const { sendResponse } = require("../../utils/sendResponse");
-
-exports.userFeed = async (req, res) => {
+exports.userFeed = CatchAsync(async (req, res) => {
   try {
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 2;
-    const skip = (page - 1) * limit;
+    const { page, limit, skip } = pagination(req);
 
-    const userPost = await PostModel.find({ userID: req.params.userID })
+    const userPost = await Feed.find({ userID: req.params.userID })
       .skip(skip)
       .limit(limit);
 
@@ -31,4 +15,4 @@ exports.userFeed = async (req, res) => {
     sendResponse(500, "Failed to get all posts!", res);
     return;
   }
-};
+});

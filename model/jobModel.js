@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const feedPageSchema = new mongoose.Schema({
+const jobSchema = new mongoose.Schema({
   name: {
     type: String,
   },
@@ -12,4 +12,5 @@ const feedPageSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("sideHustleJobs", feedPageSchema);
+const Job = mongoose.model("job", jobSchema);
+module.exports = { Job };

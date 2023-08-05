@@ -14,7 +14,7 @@ const commentSchema = new mongoose.Schema({
   },
 });
 
-const myFeedSchema = new mongoose.Schema(
+const feedSchema = new mongoose.Schema(
   {
     userID: {
       type: mongoose.Schema.Types.ObjectId,
@@ -36,4 +36,5 @@ const myFeedSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Post", myFeedSchema);
+const Feed = mongoose.model("feed", feedSchema);
+module.exports = { Feed };

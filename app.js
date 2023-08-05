@@ -12,8 +12,8 @@ app.use(cors());
 app.use(errorMiddleware)
 
 //...... app routes....
-app.use("/api", require("./routes/userRoutes"));
 app.use("/api", require("./routes/authRoutes"));
+app.use("/api", require("./routes/userRoutes"));
 app.use("/api", require("./routes/feedRoutes"));
 app.use("/api", require("./routes/chatRoutes"));
 

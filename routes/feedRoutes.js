@@ -10,7 +10,7 @@ const {
   createComments,
   comments,
 } = require("../controllers");
-const upload = require("../utils/Upload");
+const { upload } = require("../utils");
 
 // Routes...
 router.get("/jobs", jobs);
