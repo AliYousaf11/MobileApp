@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const colors = require("colors");
 
-const mongoConnection = () => {
+const mongoConnection = async () => {
   try {
-    const checkConnection = mongoose.connect(process.env.DB_URL);
+    const checkConnection = await mongoose.connect(process.env.DB_URL);
     if (checkConnection) {
       console.log("mongodb connected".bgMagenta);
     } else {
