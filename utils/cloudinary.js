@@ -13,6 +13,7 @@ const uploadToCloudinary = async (filePath, folder) => {
       {
         folder: folder,
         resource_type: "auto", // Automatically detect the resource type (image, video, etc.)
+        // transformation: { bytes_limit: 1024 * 1024 }, //1MB
       },
       (error, result) => {
         if (error) {

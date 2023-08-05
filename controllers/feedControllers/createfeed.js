@@ -18,7 +18,7 @@ exports.createfeed = async (req, res) => {
       userID: _id,
       caption,
     };
-
+    
     // Check if req.files exist and are not empty
     if (req.files && req.files.length > 0) {
       const cloudinaryUrls = [];

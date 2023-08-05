@@ -1,26 +1,33 @@
+// auth controller's
 const { signIn } = require("./authControllers/signIn");
 const { signUp } = require("./authControllers/signUp");
-const { jobs } = require("./feedControllers/jobs");
-const { createfeed } = require("./feedControllers/createfeed");
-const { updateUser } = require("./userControllers/updateUser");
-const { getUser } = require("./userControllers/getUser");
-const { feed } = require("./feedControllers/feed");
-const { likes } = require("../controllers/feedControllers/likes");
-const { userFeed } = require("../controllers/userControllers/userFeed");
-const {
-  createComments,
-} = require("../controllers/feedControllers/createComments");
-const { comments } = require("../controllers/feedControllers/comments");
+
+// chat Controller's
 const { getChats } = require("../controllers/chatContollers/getChats");
 const { sendMessage } = require("./chatContollers/sendMessage");
 const { inbox } = require("../controllers/chatContollers/inbox");
+
+// feed Controller's
+const { createfeed } = require("./feedControllers/createfeed");
+const { feed } = require("./feedControllers/feed");
+const { jobs } = require("./feedControllers/jobs");
+const { likes } = require("../controllers/feedControllers/likes");
+const {
+  createComments,
+} = require("../controllers/feedControllers/createComments");
+
+const { comments } = require("../controllers/feedControllers/comments");
+
+// userController's
+const { updateUser } = require("./userControllers/updateUser");
+const { userFeed } = require("../controllers/userControllers/userFeed");
+
 module.exports = {
   signUp,
   signIn,
   jobs,
   createfeed,
   updateUser,
-  getUser,
   feed,
   likes,
   userFeed,
