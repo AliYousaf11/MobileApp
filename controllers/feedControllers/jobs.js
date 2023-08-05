@@ -1,5 +1,6 @@
 const sideHustle = require("../../model/feedPage");
 const { sendResponse } = require("../../utils/sendResponse");
+const { pagination } = require("../../utils/pagination");
 
 // const sideHustle = require("../../model/feedPage");
 // const { sendResponse } = require("../../utils/sendResponse");
@@ -15,9 +16,10 @@ const { sendResponse } = require("../../utils/sendResponse");
 
 exports.jobs = async (req, res) => {
   try {
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 2;
-    const skip = (page - 1) * limit;
+    const { page, limit, skip } = pagination(req);
+    // const page = parseInt(req.query.page) || 1;
+    // const limit = parseInt(req.query.limit) || 2;
+    // const skip = (page - 1) * limit;
 
     const sideHustle_Jobs = await sideHustle.find().skip(skip).limit(limit);
     sendResponse(200, "All sideHustle Jobs", res, sideHustle_Jobs);
