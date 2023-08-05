@@ -14,8 +14,11 @@ const {
 } = require("../controllers/feedControllers/createComments");
 const { createfeed } = require("./feedControllers/createfeed");
 const { feed } = require("./feedControllers/feed");
-const { jobs } = require("./feedControllers/jobs");
 const { likes } = require("../controllers/feedControllers/likes");
+
+// job Controller's
+const { jobs } = require("./jobControllers/jobs");
+const { createJobs } = require("./jobControllers/createJobs");
 
 // userController's
 const { updateUser } = require("./userControllers/updateUser");
@@ -25,6 +28,7 @@ module.exports = {
   signUp,
   signIn,
   jobs,
+  createJobs,
   createfeed,
   updateUser,
   feed,
