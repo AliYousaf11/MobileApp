@@ -14,15 +14,15 @@ module.exports = (error, req, res, next) => {
   // Json web token error...
   if (error.code === "JsonWebTokenError") {
     const message = `Json web token is invalid. Please try again.`;
-    error.message = message; // Modify the error message directly
-    error.statusCode = 400; // Update status code if needed
+    error.message = message;
+    error.statusCode = 400;
   }
 
   // json token expired ...
   if (error.code === "TokenExpiredError") {
     const message = `Json web token is expired. Please try again.`;
-    error.message = message; // Modify the error message directly
-    error.statusCode = 400; // Update status code if needed
+    error.message = message;
+    error.statusCode = 400;
   }
 
   res.status(error.statusCode).json({

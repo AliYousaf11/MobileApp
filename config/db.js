@@ -7,10 +7,11 @@ const mongoConnection = async () => {
     if (checkConnection) {
       console.log("mongodb connected".bgMagenta);
     } else {
-      console.log("mongo db not connected ".bgGreen);
+      console.log("mongodb not connected ".bgGreen);
     }
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
+    console.log(error.name);
   }
 };
 

@@ -18,7 +18,7 @@ const feedSchema = new mongoose.Schema(
   {
     userID: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: "users",
     },
     caption: {
       type: String,
