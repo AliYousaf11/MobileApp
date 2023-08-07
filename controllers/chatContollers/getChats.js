@@ -11,10 +11,12 @@ exports.getChats = CatchAsync(async (req, res) => {
     participants: { $all: [senderID, receiverID] },
   });
 
-  // pagination
-  const messages = userChats.messages
-    .sort((a, b) => b.createdAt - a.createdAt)
-    .slice(skip, skip + limit);
+  if (userChats) {
+    // pagination
+    const messages = userChats.messages
+      .sort((a, b) => b.createdAt - a.createdAt)
+      .slice(skip, skip + limit);
 
-  sendResponse(200, "Success", res, messages);
+    sendResponse(200, "Success", res, messages);
+  }
 });
