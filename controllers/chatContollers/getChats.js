@@ -1,13 +1,20 @@
 const { Chat } = require("../../model");
-const { sendResponse } = require("../../utils");
+const { sendResponse, pagination } = require("../../utils");
 const { CatchAsync } = require("../../middlewares/CatchAsyncError");
 
 exports.getChats = CatchAsync(async (req, res) => {
   const senderID = req.query.sender_id;
   const receiverID = req.query.receiver_id;
 
+  const { page, limit, skip } = pagination(req);
   const userChats = await Chat.findOne({
     participants: { $all: [senderID, receiverID] },
   });
-  sendResponse(200, "Success", res, userChats.messages);
+
+  // pagination
+  const messages = userChats.messages
+    .sort((a, b) => b.createdAt - a.createdAt)
+    .slice(skip, skip + limit);
+
+  sendResponse(200, "Success", res, messages);
 });
