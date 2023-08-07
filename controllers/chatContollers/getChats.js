@@ -17,6 +17,8 @@ exports.getChats = CatchAsync(async (req, res) => {
       .sort((a, b) => b.createdAt - a.createdAt)
       .slice(skip, skip + limit);
 
-    sendResponse(200, "Success", res, messages);
+    return sendResponse(200, "Success", res, messages);
+  } else {
+    return sendResponse(200, "Success!", res);
   }
 });
