@@ -7,8 +7,8 @@ var pusher = new Pusher({
   useTLS: true,
 });
 
-exports.pushMessage = (message, userID) => {
-  pusher.trigger("OneToOne", `chat-${userID}`, {
+exports.pushMessage = async (message, userID) => {
+  await pusher.trigger("OneToOne", `chat-${userID}`, {
     message: message,
   });
 };

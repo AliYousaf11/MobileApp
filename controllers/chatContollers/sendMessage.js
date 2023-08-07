@@ -40,7 +40,6 @@ exports.sendMessage = CatchAsync(async (req, res) => {
 
   privateChat.messages.push(message);
   await privateChat.save();
-  console.log(message);
-  pushMessage(message, receiverID);
+  await pushMessage(message, receiverID);
   sendResponse(200, "Success!", res);
 });
