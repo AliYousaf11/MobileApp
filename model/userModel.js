@@ -82,7 +82,7 @@ userSchema.methods.comparePassword = async function (userpassword) {
 
 // Generate the authentication token using JWT
 userSchema.methods.getJwtToken = function () {
-  return jwt.sign({ id: this._id }, process.env.SecrectKey);
+  return jwt.sign({ id: this._id }, "SECRECT_KEY");
 };
 
 const User = mongoose.model("user", userSchema);

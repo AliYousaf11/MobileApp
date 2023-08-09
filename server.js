@@ -13,9 +13,9 @@ dotenv.config();
     app.use('/', (req,res)=>{
       res.send("Hello");
     });
-    app.listen(process.env.PORT || 4000, () => {
+    app.listen(4000, () => {
       console.log(
-        `Server started at http://localhost:${process.env.PORT}`.bgYellow
+        `Server started at http://localhost:4000`.bgYellow
       );
     });
   } else {
