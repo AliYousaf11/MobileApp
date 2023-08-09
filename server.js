@@ -10,7 +10,10 @@ dotenv.config();
   const isConnected = await mongoConnection();
 
   if (isConnected) {
-    app.listen(process.env.PORT, () => {
+    app.use('/', (req,res)=>{
+      res.send("Hello");
+    });
+    app.listen(process.env.PORT || 4000, () => {
       console.log(
         `Server started at http://localhost:${process.env.PORT}`.bgYellow
       );
